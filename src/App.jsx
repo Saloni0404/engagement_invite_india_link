@@ -58,8 +58,9 @@ useEffect(() => {
   const startMusic = async () => {
     if (audioRef.current) {
       try {
+        audioRef.current.muted = false;
         await audioRef.current.play();
-        setPlaying(true);
+           setPlaying(true);
       } catch (err) {
         console.log('Autoplay blocked');
       }
