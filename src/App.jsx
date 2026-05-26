@@ -302,11 +302,12 @@ return (
         label={invite.timeLabel}
         href={invite.calendarLink}
       />
+      {/*}
       <Detail
         icon={<MapPin/>}
         label={invite.locationShort}
         href={invite.mapLink}
-      />
+      /> */}
       <Detail
       icon={<Youtube/>}
       label="Watch Live on YouTube"
@@ -314,13 +315,13 @@ return (
       />
       <Detail
         icon={<Phone className="mini-phone"/>}
-        label="Saloni: +1 (412) 805-0867"
-        href="tel:+14128050867"
+        label="Rajendra Burad: +91 9372637770"
+        href="tel:+919372637770"
       />
       <Detail
         icon={<Phone className="mini-phone"/>}
-        label="Shrenik: +1 (470) 398-7738"
-        href="tel:+14703987738"
+        label="Sanjay Changede: +91 9370462299"
+        href="tel:+919370462299"
       />
     </div>
   
@@ -347,7 +348,7 @@ return (
   <Page n={3}>
     <div className="page3-inner fade-up">
       <h2 className="closing-title">{invite.message}</h2>
-      <section className="stack-card rsvp-card">
+    {/* <section className="stack-card rsvp-card">
         <Mail className="section-icon"/><h3>Kindly RSVP</h3>
         <p>Let us know if you can make it!</p>
         <form onSubmit={handleSubmit} className="rsvp-form">
@@ -410,7 +411,6 @@ return (
           Submit RSVP 
         </button>      
 </form>
-    
       
       </section>
      {/*
@@ -445,6 +445,7 @@ return (
         )}
       </section>
       */}
+      <p className="final-court_marriage">{invite.courtmarriage}</p>
       <p className="final-giftline">{invite.giftLine}</p>
       <p className="final-line">{invite.closing}</p>
       

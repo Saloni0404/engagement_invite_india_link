@@ -466,6 +466,7 @@ h2{
    margin-top:10px;
    margin-bottom:4px;
 }
+.final-court_marriage,
 .final-giftline{
   font-family:'Cormorant Garamond';
    font-size:clamp(1.3rem,3.5vw,2.2rem);
@@ -704,6 +705,7 @@ h2{
     font-size:16px;
   }
   .airport,
+  .court-marriage,
   .gift-line{
     font-size:1.25rem;
     line-height:1.6;
@@ -963,7 +965,7 @@ main{
   margin-top:5px !important;
   font-size:.78rem !important;
 }
-
+.final-court_marriage,
 .final-giftline{
   font-size:clamp(1rem, 4.3vw, 1.35rem) !important;
   line-height:1.05 !important;
