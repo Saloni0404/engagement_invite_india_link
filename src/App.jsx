@@ -457,6 +457,8 @@ return (
       loop
       preload="auto"
       playsInline
+      autoPlay
+      muted
     >
     <source
     src="/music/nazm-nazm.mp3"
