@@ -73,10 +73,6 @@ useEffect(() => {
       'touchstart',
       startMusic
     );
-    window.removeEventListener(
-      'scroll',
-      startMusic
-    );
   };
   window.addEventListener(
     'click',
@@ -86,10 +82,7 @@ useEffect(() => {
     'touchstart',
     startMusic
   );
-  window.addEventListener(
-    'scroll',
-    startMusic
-  );
+
 }, []);
 
 useEffect(() => {
