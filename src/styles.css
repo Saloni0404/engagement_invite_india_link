@@ -1080,3 +1080,38 @@ main{
    opacity: 0;
  }
 }
+.enter-btn {
+ margin-top: 18px;
+ padding: 10px 20px;
+
+ border-radius: 999px;
+
+ border: 1px solid rgba(255, 220, 170, 0.5);
+
+ background: rgba(255, 255, 255, 0.08);
+
+ color: #fff7ef;
+
+ font-size: 0.92rem;
+ font-weight: 500;
+ letter-spacing: 0.4px;
+
+ backdrop-filter: blur(6px);
+
+ -webkit-backdrop-filter: blur(6px);
+
+ box-shadow:
+   0 0 12px rgba(255, 215, 160, 0.15);
+
+ transition:
+   transform 0.25s ease,
+   background 0.25s ease;
+}
+
+.enter-btn:active {
+ transform: scale(0.97);
+}
+
+.enter-btn:hover {
+ background: rgba(255, 255, 255, 0.14);
+}
