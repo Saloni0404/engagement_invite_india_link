@@ -55,44 +55,50 @@ function App(){
 
 const [playing, setPlaying] = useState(false);
 useEffect(() => {
-  const startMusic = async () => {
-    if (audioRef.current) {
-      try {
-        audioRef.current.muted = false;
-        await audioRef.current.play();
-           setPlaying(true);
-      } catch (err) {
-        console.log('Autoplay blocked');
-      }
+
+  const enableAudio = async () => {
+
+    if (!audioRef.current) return;
+
+    try {
+
+      await audioRef.current.play();
+
+      setPlaying(true);
+
+    } catch (err) {
+
+      console.log('Playback blocked');
+
     }
-    window.removeEventListener(
-      'click',
-      startMusic
-    );
-    window.removeEventListener(
-      'touchstart',
-      startMusic
-    );
   };
-  window.addEventListener(
-    'click',
-    startMusic
-  );
+
   window.addEventListener(
     'touchstart',
-    startMusic
+    enableAudio,
+    { once:true }
   );
 
-}, []);
+  window.addEventListener(
+    'click',
+    enableAudio,
+    { once:true }
+  );
 
-useEffect(() => {
-  const handleVisibilityChange = () => {
-    if (!audioRef.current) return;
-    if (document.hidden) {
-      audioRef.current.pause();
-      setPlaying(false);
-    }
+  return () => {
+
+    window.removeEventListener(
+      'touchstart',
+      enableAudio
+    );
+
+    window.removeEventListener(
+      'click',
+      enableAudio
+    );
   };
+
+}, []);
   const handleBeforeUnload = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -119,14 +125,20 @@ useEffect(() => {
   };
 }, []);
 
-const toggleMusic = () => {
+const toggleMusic = async () => {
   if (!audioRef.current) return;
-  if (playing) {
-    audioRef.current.pause();
-  } else {
-    audioRef.current.play();
+  try {
+    if (playing) {
+      audioRef.current.pause();
+     setPlaying(false);
+    } else {
+      await audioRef.current.play();
+      setPlaying(true);
+   }
+
+  } catch(err) {
+    console.log(err);
   }
-  setPlaying(!playing);
 };
 
   const handleSubmit = async (e) => {
@@ -296,12 +308,12 @@ return (
         label={invite.timeLabel}
         href={invite.calendarLink}
       />
-      {/*}
+      
       <Detail
         icon={<MapPin/>}
         label={invite.locationShort}
         href={invite.mapLink}
-      /> */}
+      /> 
       <Detail
       icon={<Youtube/>}
       label="Watch Live on YouTube"
@@ -451,8 +463,6 @@ return (
       loop
       preload="auto"
       playsInline
-      autoPlay
-      muted
     >
     <source
     src="/music/nazm-nazm.mp3"
