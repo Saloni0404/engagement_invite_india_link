@@ -60,10 +60,10 @@ useEffect(() => {
       audioRef.current.muted = false;
       await audioRef.current.play();
       setPlaying(true);
-      window.removeEventListener(
+      {/*window.removeEventListener(
         "scroll",
         startMusic
-      );
+      );*/}
       window.removeEventListener(
         "touchstart",
         startMusic
@@ -76,11 +76,11 @@ useEffect(() => {
       console.log("Autoplay blocked");
     }
   };
-  window.addEventListener(
+  {/*window.addEventListener(
     "scroll",
     startMusic,
     { passive: true }
-  );
+  );*/}
   window.addEventListener(
     "touchstart",
     startMusic,
@@ -92,10 +92,10 @@ useEffect(() => {
     { passive: true }
   );
   return () => {
-    window.removeEventListener(
+   {/* window.removeEventListener(
       "scroll",
       startMusic
-    );
+    );*/}
     window.removeEventListener(
       "touchstart",
       startMusic
@@ -504,7 +504,6 @@ return (
   loop
   preload="auto"
   playsInline
-  muted
 >
     <source
     src="/music/nazm-nazm.mp3"
