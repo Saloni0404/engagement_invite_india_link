@@ -278,41 +278,21 @@ return (
     <div className="scroll-note">
       Scroll to open
     </div>
-    <button
- className="enter-btn"
- onClick={async () => {
-   if (!audioRef.current) return;
-
-   try {
-     audioRef.current.muted = false;
-     await audioRef.current.play();
-     setPlaying(true);
-   } catch (err) {
-     console.log(err);
-   }
- }}
->
- ♫ Tap to Open Invitation
-</button>
-So it becomes:
-<div className="scroll-note">
- Scroll to open
-</div>
-<button
- className="enter-btn"
- onClick={async () => {
-   if (!audioRef.current) return;
-   try {
-     audioRef.current.muted = false;
-     await audioRef.current.play();
-     setPlaying(true);
-   } catch (err) {
-     console.log(err);
-   }
- }}
->
- ♫ Tap to Open Invitation
-</button>
+   <button
+  className="enter-btn"
+  onClick={async () => {
+    if (!audioRef.current) return;
+    try {
+      audioRef.current.muted = false;
+      await audioRef.current.play();
+      setPlaying(true);
+    } catch (err) {
+      console.log(err);
+    }
+  }}
+  >
+  ♫ Tap to Open Invitation
+  </button>
 
   </div>
 </Page>
