@@ -107,7 +107,29 @@ useEffect(() => {
   };
 }, []);
 
-
+useEffect(() => {
+  const handleVisibilityChange = () => {
+    if (!audioRef.current) return;
+    if (document.hidden) {
+      audioRef.current.pause();
+      setPlaying(false);
+    } else {
+      audioRef.current.play()
+        .then(() => setPlaying(true))
+        .catch(() => {});
+    }
+  };
+  document.addEventListener(
+    'visibilitychange',
+    handleVisibilityChange
+  );
+  return () => {
+    document.removeEventListener(
+      'visibilitychange',
+      handleVisibilityChange
+    );
+  };
+}, []);
 const [playing, setPlaying] = useState(false);
 {/*useEffect(() => {
   const startMusic = async () => {
