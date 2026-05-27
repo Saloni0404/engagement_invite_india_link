@@ -949,7 +949,6 @@ main{
   line-height:1.05 !important;
   margin-top:2px !important;
 }
-
 .rsvp-form input,
 .rsvp-form select,
 .rsvp-form textarea{
@@ -958,7 +957,6 @@ main{
   border-radius:10px !important;
   font-size:14px !important;
 }
-
 .rsvp-form .pill{
   align-self:center;
   padding:10px 24px !important;
@@ -1082,36 +1080,27 @@ main{
 }
 .enter-btn {
  margin-top: 18px;
- padding: 10px 20px;
-
+ padding: 11px 22px;
  border-radius: 999px;
-
- border: 1px solid rgba(255, 220, 170, 0.5);
-
- background: rgba(255, 255, 255, 0.08);
-
- color: #fff7ef;
-
+ border: 1px solid rgba(255, 223, 186, 0.55);
+ background-color: rgba(80, 20, 35, 0.28);
+ color: #fff6f0;
  font-size: 0.92rem;
  font-weight: 500;
  letter-spacing: 0.4px;
-
- backdrop-filter: blur(6px);
-
- -webkit-backdrop-filter: blur(6px);
-
+ cursor: pointer;
+ outline: none;
+ backdrop-filter: blur(3px);
+ -webkit-backdrop-filter: blur(3px);
  box-shadow:
-   0 0 12px rgba(255, 215, 160, 0.15);
-
+   0 0 10px rgba(255, 215, 160, 0.12);
  transition:
-   transform 0.25s ease,
-   background 0.25s ease;
+   transform 0.22s ease,
+   background-color 0.22s ease;
 }
-
+.enter-btn:hover {
+ background-color: rgba(100, 30, 50, 0.38);
+}
 .enter-btn:active {
  transform: scale(0.97);
-}
-
-.enter-btn:hover {
- background: rgba(255, 255, 255, 0.14);
 }

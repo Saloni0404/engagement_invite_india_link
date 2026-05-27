@@ -568,13 +568,21 @@ So it becomes:
     type="audio/mpeg"
     />
     </audio>
+  {playing && (
+ <button
+   className="music-btn"
+   onClick={toggleMusic}
+ >
+   {playing ? '❚❚ ' : '▶'}
+ </button>
+ )}
 
-  <button
+  {/*<button
     className="music-btn"
     onClick={toggleMusic}
   >
     {playing ? '❚❚ ' : '▶'}
-   </button>
+   </button>*/}
 
 </main>
   </>
