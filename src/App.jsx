@@ -209,16 +209,17 @@ const toggleMusic = () => {
 };
 const openInvitation = async () => {
  if (opened) return;
- setOpened(true);
  if (!audioRef.current) return;
  try {
    audioRef.current.muted = false;
    await audioRef.current.play();
    setPlaying(true);
+   setOpened(true);
  } catch (err) {
    console.log(err);
  }
 };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
