@@ -270,15 +270,15 @@ return (
    onClick={openInvitation}
  >
    <div className="overlay-content">
-     <p className="overlay-small">
+    {/* <p className="overlay-small">
        Saloni & Shrenik
-     </p>
+     </p>*/}
      <h2>
        Tap to Open Invitation
      </h2>
-     <p className="overlay-note">
+   {/*<p className="overlay-note">
        Please enable sound for the best experience
-     </p>
+     </p>*/}
    </div>
  </div>
 )}
