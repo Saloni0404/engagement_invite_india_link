@@ -52,53 +52,63 @@ function App(){
     accommodationGuests: 0
   });
   const audioRef = useRef(null);
+useEffect(() => {
+ const startMusic = () => {
+   if (audioRef.current) {
+     audioRef.current.play().catch(() => {});
+
+     window.removeEventListener("scroll", startMusic);
+     window.removeEventListener("touchstart", startMusic);
+   }
+ };
+ window.addEventListener("scroll", startMusic, { passive: true });
+ window.addEventListener("touchstart", startMusic, { passive: true });
+ return () => {
+   window.removeEventListener("scroll", startMusic);
+   window.removeEventListener("touchstart", startMusic);
+ };
+}, []);
 
 const [playing, setPlaying] = useState(false);
-useEffect(() => {
-
-  const enableAudio = async () => {
-
-    if (!audioRef.current) return;
-
-    try {
-
-      await audioRef.current.play();
-
-      setPlaying(true);
-
-    } catch (err) {
-
-      console.log('Playback blocked');
-
+{/*useEffect(() => {
+  const startMusic = async () => {
+    if (audioRef.current) {
+      try {
+        audioRef.current.muted = false;
+        await audioRef.current.play();
+           setPlaying(true);
+      } catch (err) {
+        console.log('Autoplay blocked');
+      }
     }
-  };
-
-  window.addEventListener(
-    'touchstart',
-    enableAudio,
-    { once:true }
-  );
-
-  window.addEventListener(
-    'click',
-    enableAudio,
-    { once:true }
-  );
-
-  return () => {
-
-    window.removeEventListener(
-      'touchstart',
-      enableAudio
-    );
-
     window.removeEventListener(
       'click',
-      enableAudio
+      startMusic
+    );
+    window.removeEventListener(
+      'touchstart',
+      startMusic
     );
   };
+  window.addEventListener(
+    'click',
+    startMusic
+  );
+  window.addEventListener(
+    'touchstart',
+    startMusic
+  );
 
-}, []);
+}, []);*/}
+
+{/*useEffect(() => {
+  const handleVisibilityChange = () => {
+    if (!audioRef.current) return;
+    if (document.hidden) {
+      audioRef.current.pause();
+      setPlaying(false);
+    }
+  };
   const handleBeforeUnload = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -124,21 +134,15 @@ useEffect(() => {
     );
   };
 }, []);
-
-const toggleMusic = async () => {
+*/}
+const toggleMusic = () => {
   if (!audioRef.current) return;
-  try {
-    if (playing) {
-      audioRef.current.pause();
-     setPlaying(false);
-    } else {
-      await audioRef.current.play();
-      setPlaying(true);
-   }
-
-  } catch(err) {
-    console.log(err);
+  if (playing) {
+    audioRef.current.pause();
+  } else {
+    audioRef.current.play();
   }
+  setPlaying(!playing);
 };
 
   const handleSubmit = async (e) => {
@@ -308,7 +312,6 @@ return (
         label={invite.timeLabel}
         href={invite.calendarLink}
       />
-      
       <Detail
         icon={<MapPin/>}
         label={invite.locationShort}
