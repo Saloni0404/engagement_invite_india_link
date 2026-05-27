@@ -52,25 +52,61 @@ function App(){
     accommodationGuests: 0
   });
   
-  const audioRef = useRef(null);
-  useEffect(() => {
- const startMusic = () => {
-   if (audioRef.current) {
-     audioRef.current.play().catch(() => {});
-
-     window.removeEventListener("scroll", startMusic);
-     window.addEventListener("touchmove", startMusic, { passive: true });
-     window.removeEventListener("touchstart", startMusic);
-   }
- };
- window.addEventListener("scroll", startMusic, { passive: true });
- window.addEventListener("touchstart", startMusic, { passive: true });
- return () => {
-   window.removeEventListener("scroll", startMusic);
-   window.removeEventListener("touchmove", startMusic);
-   window.removeEventListener("touchstart", startMusic);
- };
+const audioRef = useRef(null);
+useEffect(() => {
+  const startMusic = async () => {
+    if (!audioRef.current) return;
+    try {
+      audioRef.current.muted = false;
+      await audioRef.current.play();
+      setPlaying(true);
+      window.removeEventListener(
+        "scroll",
+        startMusic
+      );
+      window.removeEventListener(
+        "touchstart",
+        startMusic
+      );
+      window.removeEventListener(
+        "touchmove",
+        startMusic
+      );
+    } catch (err) {
+      console.log("Autoplay blocked");
+    }
+  };
+  window.addEventListener(
+    "scroll",
+    startMusic,
+    { passive: true }
+  );
+  window.addEventListener(
+    "touchstart",
+    startMusic,
+    { passive: true }
+  );
+  window.addEventListener(
+    "touchmove",
+    startMusic,
+    { passive: true }
+  );
+  return () => {
+    window.removeEventListener(
+      "scroll",
+      startMusic
+    );
+    window.removeEventListener(
+      "touchstart",
+      startMusic
+    );
+    window.removeEventListener(
+      "touchmove",
+      startMusic
+    );
+  };
 }, []);
+
 
 const [playing, setPlaying] = useState(false);
 {/*useEffect(() => {
@@ -463,13 +499,13 @@ return (
       
     </div>
   </Page>
- 
-    <audio
-      ref={audioRef}
-      loop
-      preload="auto"
-      playsInline
-    >
+ <audio
+  ref={audioRef}
+  loop
+  preload="auto"
+  playsInline
+  muted
+>
     <source
     src="/music/nazm-nazm.mp3"
     type="audio/mpeg"
