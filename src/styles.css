@@ -1182,4 +1182,9 @@ main{
    opacity: 1;
  }
 }
+.invite-locked {
+ height: 100vh;
+ height: 100dvh;
+ overflow: hidden;
+}
 

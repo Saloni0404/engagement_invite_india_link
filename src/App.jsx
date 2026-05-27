@@ -261,7 +261,7 @@ const openInvitation = async () => {
 return (
   <>
     <FallingPetals />
-    <main>
+    <main className={!opened ? "invite-locked" : ""}>
 
 
 <Page n={1}>
