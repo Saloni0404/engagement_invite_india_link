@@ -1123,7 +1123,6 @@ main{
 }
 .overlay-content {
   text-align: center;
-  font-family: 'Great Vibes', serif;
   color: #d8b15f;
   width: 230px;
   height: 230px;
@@ -1158,6 +1157,7 @@ main{
 }
 
 .overlay-content h2 {
+font-family: 'Great Vibes', serif;
  margin: 10px 0;
  font-size: 1.5rem;
  font-weight: 700;
