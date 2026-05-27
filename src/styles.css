@@ -123,7 +123,7 @@ div{
   padding:20px 16px;
   padding-top:60px;
 }
-.page3-inner{
+/*.page3-inner{
   width:calc(100% - 28px);
   max-width:calc(100% - 28px);
   margin:0 auto;
@@ -134,7 +134,22 @@ div{
   gap:10px;
   box-sizing:border-box;
 }
+*/
 
+.page3-inner{
+  width:calc(100% - 32px);
+  max-width:calc(100% - 32px);
+  margin:0 auto;
+  min-height:85dvh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+  padding:42px 18px;
+  text-align:center;
+  box-sizing:border-box;
+}
 /* ======================================================
    TYPOGRAPHY
 ====================================================== */
@@ -963,19 +978,33 @@ main{
   margin-top:5px !important;
   font-size:.78rem !important;
 }
-.final-court_marriage,
-.final-giftline{
+
+.final-court_marriage{
+  margin-top:12px;
+  line-height:1.7;
+}
+/*.final-giftline{
   font-size:clamp(1rem, 4.3vw, 1.35rem) !important;
   line-height:1.05 !important;
   margin:4px 0 0 !important;
   padding:0 6px;
+}*/
+.final-giftline{
+  margin-top:10px;
+  line-height:1.7;
+  max-width:85%;
 }
-
+/*
 .final-line{
   font-size:clamp(1.15rem, 4.8vw, 1.55rem) !important;
   line-height:1.05 !important;
   margin:0 !important;
   padding:0 6px !important;
+}*/
+.final-line{
+  margin-top:18px;
+  line-height:1.9;
+  letter-spacing:0.4px;
 }
 
 .scroll-note{
