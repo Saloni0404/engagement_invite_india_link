@@ -131,6 +131,8 @@ useEffect(() => {
   };
 }, []);
 const [playing, setPlaying] = useState(false);
+const [opened, setOpened] = useState(false);
+
 {/*useEffect(() => {
   const startMusic = async () => {
     if (audioRef.current) {
@@ -205,6 +207,18 @@ const toggleMusic = () => {
   }
   setPlaying(!playing);
 };
+const openInvitation = async () => {
+ if (opened) return;
+ setOpened(true);
+ if (!audioRef.current) return;
+ try {
+   audioRef.current.muted = false;
+   await audioRef.current.play();
+   setPlaying(true);
+ } catch (err) {
+   console.log(err);
+ }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -250,8 +264,26 @@ return (
 
 
 <Page n={1}>
-  <div className="hero-card fade-up">
-  
+  {!opened && (
+ <div
+   className="invite-overlay"
+   onClick={openInvitation}
+ >
+   <div className="overlay-content">
+     <p className="overlay-small">
+       Saloni & Shrenik
+     </p>
+     <h2>
+       Tap to Open Invitation
+     </h2>
+     <p className="overlay-note">
+       Please enable sound for the best experience
+     </p>
+   </div>
+ </div>
+)}
+
+  <div className="hero-card fade-up">  
     {/*
     <img
       src={invite.images.logo}
@@ -278,22 +310,6 @@ return (
     <div className="scroll-note">
       Scroll to open
     </div>
-   <button
-  className="enter-btn"
-  onClick={async () => {
-    if (!audioRef.current) return;
-    try {
-      audioRef.current.muted = false;
-      await audioRef.current.play();
-      setPlaying(true);
-    } catch (err) {
-      console.log(err);
-    }
-  }}
-  >
-  ♫ Tap to Open Invitation
-  </button>
-
   </div>
 </Page>
 
