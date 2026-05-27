@@ -51,13 +51,15 @@ function App(){
     accommodation: 'No',
     accommodationGuests: 0
   });
+  
   const audioRef = useRef(null);
-useEffect(() => {
+  useEffect(() => {
  const startMusic = () => {
    if (audioRef.current) {
      audioRef.current.play().catch(() => {});
 
      window.removeEventListener("scroll", startMusic);
+     window.addEventListener("touchmove", startMusic, { passive: true });
      window.removeEventListener("touchstart", startMusic);
    }
  };
@@ -65,6 +67,7 @@ useEffect(() => {
  window.addEventListener("touchstart", startMusic, { passive: true });
  return () => {
    window.removeEventListener("scroll", startMusic);
+   window.removeEventListener("touchmove", startMusic);
    window.removeEventListener("touchstart", startMusic);
  };
 }, []);
