@@ -12,7 +12,7 @@ export const invite = {
  /* rsvpLink: 'https://forms.gle/REPLACE_WITH_YOUR_RSVP_FORM',*/
   calendarLink: '/saloni-shrenik-engagement.ics',
   message: 'We look forward to celebrating with you!',
-  courtmarriage:'The  registered court marriage will be held on 14th June, 2026',
+  courtmarriage:'The  registered court marriage will be held on 14th June, 2026 amongst immediate family members.',
   giftLine: 'Your presence is the only gift we need, but your vibes and blessings are a must!',
   closing: 'Come for the celebration, stay for the memories!!',
   contacts: [
